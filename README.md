@@ -15,14 +15,21 @@ flutter test
 
 ## Carpetas
 
-| Carpeta              | Qué hay                                                    |
-|----------------------|------------------------------------------------------------|
-| `lib/game/`          | Bucle del juego, física, dibujo, intro y fuente pixel      |
-| `lib/personajes/`    | Un módulo por personaje: `hoja.png`, `imagenes/` y código  |
-| `lib/escenarios/`    | Los niveles, dibujados con letras (ver su `LEEME.md`)      |
-| `lib/sonido/`        | Efectos y música                                           |
-| `tools/`             | Scripts para recortar sprites y crear sonidos              |
-| `test/`              | Pruebas automáticas                                        |
+El mapa completo ("quiero cambiar X → abre Y") está en
+[`lib/LEEME.md`](lib/LEEME.md). Cada carpeta tiene su propio `LEEME.md`.
+
+| Carpeta            | Qué hay                                                    |
+|--------------------|------------------------------------------------------------|
+| `lib/pantalla/`    | La pantalla de Flutter: bucle, teclado y botones táctiles  |
+| `lib/juego/`       | Las reglas: estado, física, enemigos, objetos, fantasma    |
+| `lib/dibujo/`      | Dibuja cada cosa en pantalla (una pieza por archivo)       |
+| `lib/intro/`       | La historia del principio: guion, motor y dibujo           |
+| `lib/personajes/`  | Arquero, princesa y villano: `hoja.png`, `imagenes/` y código |
+| `lib/pixel_art/`   | Dibujos hechos con código (enemigos, objetos, terreno...)  |
+| `lib/escenarios/`  | Los niveles, dibujados con letras                          |
+| `lib/sonido/`      | Efectos y música                                           |
+| `tools/`           | Scripts para recortar sprites y crear sonidos              |
+| `test/`            | Pruebas automáticas                                        |
 
 ## Herramientas (opcional)
 

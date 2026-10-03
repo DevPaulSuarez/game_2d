@@ -51,8 +51,12 @@ Después, el juego lo dibuja con la imagen que elige `animacion.dart`.
 1. **Imagen**: pon `agachado.png` en `imagenes/` (sirve de prueba copiar
    `saltar_1.png`, que ya está agachado).
 2. **Botón**: añade `final bool agacharse;` a la clase `Botones` en
-   `arquero.dart`, y en `lib/game/game.dart` (donde se crea
-   `Botones(...)`) di qué tecla lo activa.
+   `arquero.dart`. Después:
+   - en `lib/juego/entidades.dart`, añade `bool down = false;` a `Input`;
+   - en `lib/pantalla/pantalla_juego.dart`, di qué tecla lo activa
+     (`..down = k([LogicalKeyboardKey.arrowDown])`);
+   - en `lib/juego/juego.dart`, donde se crea `Botones(...)`, añade
+     `agacharse: input.down`.
 3. **Dato**: añade `bool agachado = false;` a la clase `Arquero`.
 4. **Pieza**: crea `agacharse.dart`:
    ```dart

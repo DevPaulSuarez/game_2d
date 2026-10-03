@@ -1,6 +1,6 @@
 // PIEZA: lanzar flechas.
 
-import '../../game/game.dart';
+import '../../juego/juego.dart';
 import 'ajustes.dart';
 import 'arquero.dart';
 import '../../sonido/efecto.dart';

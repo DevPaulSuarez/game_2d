@@ -2,7 +2,7 @@
 //
 // Se usa el mismo botón que para disparar: arquero.dart decide cuál toca.
 
-import '../../game/game.dart';
+import '../../juego/juego.dart';
 import 'ajustes.dart';
 import 'arquero.dart';
 import '../../sonido/efecto.dart';

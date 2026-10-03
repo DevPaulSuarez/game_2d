@@ -8,7 +8,7 @@
 // Cada tramo es un trozo del nivel (15 filas). La leyenda de las letras
 // está en escenario.dart.
 
-import '../game/level.dart';
+import '../juego/nivel.dart';
 import 'escenario.dart';
 
 const reinoHadas = Escenario(

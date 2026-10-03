@@ -2,7 +2,7 @@
 //
 // Mientras corre, el arquero deja detrás copias de sí mismo que se van
 // borrando (como siluetas difuminadas). Aquí solo se guarda DÓNDE y en qué
-// pose estaba; el dibujo lo hace el juego (painter.dart) con el color y la
+// pose estaba; el dibujo lo hace lib/dibujo/arquero.dart con el color y la
 // transparencia de ajustes.dart.
 
 import 'ajustes.dart';

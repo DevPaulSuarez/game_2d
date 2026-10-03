@@ -2,7 +2,7 @@
 
 import 'dart:math' as math;
 
-import '../../game/game.dart';
+import '../../juego/juego.dart';
 import 'ajustes.dart';
 import 'arquero.dart';
 import '../../sonido/efecto.dart';
@@ -36,8 +36,8 @@ void caer(Arquero a, Botones b, double dt, Game mundo) {
   // Mantener el botón mientras sube = gravedad más suave = salto más alto.
   final gravedad = b.saltoApretado && a.vy < 0
       ? AjustesArquero.gravedadManteniendo
-      : Game.gravity;
-  a.vy = math.min(a.vy + gravedad * dt, Game.maxFall);
+      : AjustesJuego.gravedad;
+  a.vy = math.min(a.vy + gravedad * dt, AjustesJuego.caidaMaxima);
 
   final estabaEnSuelo = a.onGround;
   mundo.mover(a, dt);

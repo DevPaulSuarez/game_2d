@@ -7,7 +7,7 @@
 //
 // Se revisa de arriba abajo y gana la PRIMERA situación que se cumpla.
 
-import '../../game/art.dart';
+import '../imagenes.dart';
 import 'ajustes.dart';
 import 'arquero.dart';
 

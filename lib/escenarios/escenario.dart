@@ -30,7 +30,7 @@
 
 import 'dart:math';
 
-import '../game/level.dart';
+import '../juego/nivel.dart';
 
 class Escenario {
   /// Número que se ve en pantalla ("STAGE 2").

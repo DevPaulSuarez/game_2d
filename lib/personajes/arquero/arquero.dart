@@ -16,7 +16,7 @@
 //
 // Lee LEEME.md para ver cómo cambiar o añadir piezas.
 
-import '../../game/game.dart';
+import '../../juego/juego.dart';
 import 'ajustes.dart';
 import 'atacar.dart';
 import 'caminar.dart';

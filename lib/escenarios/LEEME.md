@@ -65,8 +65,9 @@ empezará en el Reino de las Hadas. Vuelve a ponerlo en `0` al terminar.
 3. En `escenarios.dart`, impórtalo y añádelo al final de la lista.
 4. `tema:` decide el aspecto: `Tema.bosque` (día, hierba verde, ramas,
    rocas con musgo) o `Tema.hadas` (noche, hierba turquesa, raíces que
-   brillan, piedras con runas). Un aspecto nuevo necesita dibujos nuevos
-   en `lib/game/sprites.dart` y `lib/game/painter.dart`.
+   brillan, piedras con runas). Un aspecto nuevo necesita su terreno en
+   `lib/pixel_art/terreno.dart` y su cielo en `lib/dibujo/` (copia
+   `fondo_hadas.dart` como ejemplo y elígelo en `lib/dibujo/pintor.dart`).
 
 Después de cambiar un mapa, ejecuta `flutter test`. Comprueba que todos
 los escenarios se construyen sin errores y que un "jugador robot" puede

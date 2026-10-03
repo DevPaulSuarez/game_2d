@@ -22,7 +22,7 @@ está montado y qué se decidió en conversaciones anteriores.
 
 Plataformas 2D en pixel art: **el arquero y la princesa celestial**.
 
-### Historia (intro en `lib/game/cutscene.dart`)
+### Historia (intro en `lib/intro/guion.dart`)
 
 1. Una princesa celestial llena el reino de paz y alegría.
 2. Vuelve su **pareja** (el villano), le promete un reino sin fin y joyas;
@@ -55,21 +55,35 @@ arquero dándole ánimos.
 
 ## Cómo está montado
 
-Flutter puro, sin motor de juegos:
+Flutter puro, sin motor de juegos. Mapa completo en `lib/LEEME.md` y un
+`LEEME.md` en cada carpeta. Las **reglas** (`juego/`) y el **dibujo**
+(`dibujo/`) están separados.
 
-- `lib/main.dart`: un `Ticker` llama a `game.update()` en pasos de 1/120 s;
-  aquí se leen el teclado y los botones táctiles.
-- `lib/game/game.dart`: estado del juego, física propia (`Box`), enemigos,
-  proyectiles y frases del fantasma.
-- `lib/game/painter.dart`: un `CustomPainter` que dibuja **todo** (unas
-  1.500 líneas). Pendiente: partirlo en piezas.
-- `lib/game/cutscene.dart`: la intro, como lista de pasos (`_Say` diálogo,
-  `_Move` caminar, `_Anim` animar durante N segundos, `_Do`, `_Wait`).
-- `lib/game/art.dart`: carga las imágenes de cada personaje.
-- `lib/game/sprites.dart`: pixel art dibujado con código (terreno,
-  enemigos, objetos, princesa de las hadas).
-- `lib/game/pixel_font.dart`: fuente pixel 3x5.
-- `lib/personajes/<arquero|villano|princesa>/`: un módulo por personaje con
+- `lib/main.dart`: arranque (carga imágenes y sonido).
+- `lib/pantalla/`: `pantalla_juego.dart` (un `Ticker` llama a
+  `game.update()` en pasos de 1/120 s y lee el teclado) y
+  `controles_tactiles.dart`.
+- `lib/juego/`: `juego.dart` (clase `Game`: estado y orden de las cosas),
+  `ajustes.dart` (números del juego y tabla `fichasEnemigos`),
+  `entidades.dart` (`Input`, `Box`, `Enemy`...), `fisica.dart`,
+  `enemigos.dart`, `objetos.dart`, `fantasma.dart` (frases) y `nivel.dart`
+  (`Tile`, `T`, `LevelData`). Las piezas son `extension ... on Game`;
+  `juego.dart` las reexporta todas.
+- `lib/dibujo/`: `pintor.dart` (`GamePainter`, solo el orden) llama a una
+  función por pieza (`fondo_bosque`, `fondo_hadas`, `terreno`, `meta`,
+  `objetos`, `enemigos`, `arquero`, `fantasma`, `hud`, `pantallas`). Todas
+  reciben un `Pincel` (`pincel.dart`) con el lienzo, el juego y las
+  imágenes. `letras.dart`: fuente pixel 3x5.
+- `lib/intro/`: `guion.dart` (la historia como lista de pasos: `Dice`
+  diálogo, `Camina`, `Anima` durante N segundos, `Haz`, `Espera`),
+  `escena.dart` (motor: `Cutscene`, actores, efectos) y
+  `dibujar_escena/actores/dialogo.dart`.
+- `lib/pixel_art/`: pixel art dibujado con código. `PixelArt` agrupa
+  `enemigos`, `objetos`, `decorado`, `intro`, `terrenoBosque` y
+  `terrenoHadas`; `herramientas.dart` tiene `desdeMapa`, `dibujarImagen`,
+  `rect` y `parche`.
+- `lib/personajes/`: `imagenes.dart` (`Art`, `Character`, `Sprite`: carga
+  los PNG) y un módulo por personaje `<arquero|villano|princesa>/` con
   - `hoja.png`: la hoja grande original,
   - `imagenes/`: los cuadros recortados (los genera `tools/build_sprites.py`),
   - código propio (el arquero: `arquero.dart`, `caminar.dart`,
@@ -80,19 +94,18 @@ Flutter puro, sin motor de juegos:
   Reino de las Hadas.
 - `lib/sonido/`: `efecto.dart`, `sonido.dart`, `efectos/*.wav`,
   `musica/*.m4a` (los genera `tools/crear_sonidos.py`).
-- `referencia_prototipo/pixel_1x/`: imágenes de referencia; el juego no
-  las usa.
 
 ### Imágenes de los personajes
 
 - Nombres: `caminar_1.png`, `caminar_2.png`... forman la animación
   `'caminar'`; `quieto_derecha.png` es una animación de 1 cuadro.
-- `art.dart` escala cada personaje por la altura de `quieto_frente`
+- `imagenes.dart` escala cada personaje por la altura de `quieto_frente`
   (arquero 30, princesa 30, villano 36 píxeles del mundo) y apoya los pies
   en la fila más baja con color.
 - La princesa tiene: `quieto_*`, `caminar`, `atacar`, `saltar`, `muerte`,
   `fantasma_{verde,azul,blanco}_{frente,derecha,espalda,izquierda}`,
-  `retrato`. En el juego se usa el fantasma **azul**.
+  `retrato`. En el juego se usa el fantasma **azul**. Las que no se usan
+  están listadas en `lib/personajes/LEEME.md`.
 - El villano tiene, entre otras: `ataque_1..5` (roba el corazón),
   `lanzar_magia_1..5`, `bola_magia`, `con_corazon`, `demonio_1..4`,
   `retrato`, `retrato_demonio`.
@@ -128,17 +141,19 @@ por terminado.
 ### Ver la intro sin teléfono
 
 Para revisar cómo se ve un cambio visual: crea un test temporal que cree
-`Art.load()`, `Sprites()`, `Game()` y un `Cutscene()`, avance
+`Art.load()`, `PixelArt()`, `Game()` y un `Cutscene()`, avance
 `cutscene.update(dt, avanzar)` y pinte `GamePainter.paint()` sobre un
 `ui.PictureRecorder` para guardar PNG en una carpeta temporal. Míralos y
-**borra el test** al terminar.
+**borra el test** al terminar. Para una reorganización sin cambios
+visuales, guarda los PNG antes y después y compáralos con `diff -r`.
 
 ## Problemas conocidos y pendientes
 
 - **iOS no compila**: Flutter 3.41.9 falla con Xcode 27 (`lipo
   -verify_arch` con 2 arquitecturas). Se arregla con Flutter 3.47.5 o
   posterior (`flutter upgrade`); el usuario aún no lo ha aprobado.
-- Partir `lib/game/painter.dart` en piezas (intro, enemigos, diálogos...).
+- **No hay carpeta `android/`** aunque Android es objetivo: se crea con
+  `flutter create --platforms=android .` (pendiente de que lo pida).
 - La princesa de las hadas (Stage 2) sigue dibujada con código.
 - Hay mezcla de resoluciones: personajes desde hojas grandes y el resto
   pixel art con código.

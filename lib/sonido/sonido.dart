@@ -1,5 +1,4 @@
-// REPRODUCE los efectos y la música (con el paquete audioplayers, el mismo
-// que usa el motor Flame para su audio).
+// REPRODUCE los efectos y la música (con el paquete audioplayers).
 
 import 'package:audioplayers/audioplayers.dart';
 

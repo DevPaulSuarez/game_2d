@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:game_2d/game/game.dart';
-import 'package:game_2d/game/level.dart';
+import 'package:game_2d/juego/juego.dart';
 import 'package:game_2d/personajes/arquero/arquero.dart';
 
 void main() {

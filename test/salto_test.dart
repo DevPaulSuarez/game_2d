@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:game_2d/game/game.dart';
+import 'package:game_2d/juego/juego.dart';
 
 void main() {
   test('suelo estable al caminar y saltos seguidos', () {
