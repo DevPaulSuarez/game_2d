@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mario_pixel/game/game.dart';
-import 'package:mario_pixel/game/level.dart';
-import 'package:mario_pixel/personajes/arquero/arquero.dart';
+import 'package:game_2d/game/game.dart';
+import 'package:game_2d/game/level.dart';
+import 'package:game_2d/personajes/arquero/arquero.dart';
 
 void main() {
   Game juego() {

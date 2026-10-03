@@ -1,17 +1,35 @@
-# mario_pixel
+# game_2d
 
-A new Flutter project.
+Juego de plataformas 2D hecho con Flutter (sin motores externos):
+**el arquero y la princesa celestial**.
 
-## Getting Started
+## Empezar
 
-This project is a starting point for a Flutter application.
+```
+git clone https://github.com/DevPaulSuarez/game_2d.git
+cd game_2d
+flutter pub get
+flutter run
+flutter test
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Carpetas
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+| Carpeta              | Qué hay                                                    |
+|----------------------|------------------------------------------------------------|
+| `lib/game/`          | Bucle del juego, física, dibujo, intro y fuente pixel      |
+| `lib/personajes/`    | Un módulo por personaje: `hoja.png`, `imagenes/` y código  |
+| `lib/escenarios/`    | Los niveles, dibujados con letras (ver su `LEEME.md`)      |
+| `lib/sonido/`        | Efectos y música                                           |
+| `tools/`             | Scripts para recortar sprites y crear sonidos              |
+| `test/`              | Pruebas automáticas                                        |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Herramientas (opcional)
+
+Para volver a recortar sprites o crear sonidos hace falta Python:
+
+```
+python3 -m venv .venv && .venv/bin/pip install pillow numpy scipy
+.venv/bin/python tools/build_sprites.py
+.venv/bin/python tools/crear_sonidos.py
+```

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mario_pixel/escenarios/escenarios.dart';
-import 'package:mario_pixel/game/game.dart';
-import 'package:mario_pixel/game/level.dart';
+import 'package:game_2d/escenarios/escenarios.dart';
+import 'package:game_2d/game/game.dart';
+import 'package:game_2d/game/level.dart';
 
 void main() {
   /// Juego en el Reino de las Hadas, ya sin la tarjeta "STAGE 2".

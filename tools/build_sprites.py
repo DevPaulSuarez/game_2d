@@ -13,7 +13,7 @@ Resultado (lo que carga el juego):
 Solo necesitas este script si quieres volver a recortar desde las hojas
 grandes. Para retocar un cuadro basta con editar su PNG directamente.
 
-Uso (desde la carpeta mario_pixel):
+Uso (desde la carpeta del proyecto, game_2d):
     python3 -m venv .venv && .venv/bin/pip install pillow numpy scipy
     .venv/bin/python tools/build_sprites.py            # exporta los PNG
     .venv/bin/python tools/build_sprites.py --debug    # además tools/out/*_boxes.png

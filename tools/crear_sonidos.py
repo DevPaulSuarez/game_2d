@@ -7,7 +7,7 @@ Resultado:
     lib/sonido/efectos/*.wav   (efectos cortos: salto, flecha, cristal...)
     lib/sonido/musica/*.m4a    (música en bucle de cada pantalla)
 
-Uso (desde la carpeta mario_pixel):
+Uso (desde la carpeta del proyecto, game_2d):
     .venv/bin/python tools/crear_sonidos.py
 
 Para cambiar una melodía, edita las listas de notas de más abajo: cada

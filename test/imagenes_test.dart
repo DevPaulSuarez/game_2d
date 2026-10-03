@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mario_pixel/game/art.dart';
+import 'package:game_2d/game/art.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

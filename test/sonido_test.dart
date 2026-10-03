@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mario_pixel/escenarios/escenarios.dart';
-import 'package:mario_pixel/game/game.dart';
-import 'package:mario_pixel/sonido/efecto.dart';
+import 'package:game_2d/escenarios/escenarios.dart';
+import 'package:game_2d/game/game.dart';
+import 'package:game_2d/sonido/efecto.dart';
 
 void main() {
   Game jugando() {
